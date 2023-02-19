@@ -65,6 +65,11 @@ def requests():
 
 		return "Message received.", 200
 
+@app.route('/requests/clear', methods=["POST"])
+def clear(): # todo : check if sent by localhost^
+	if request.method != "POST": return
+	open(fp, 'w').close()
+	return "Sucessfully cleared", 200
 
 def run():
 	app.run(host="0.0.0.0", port=8080)

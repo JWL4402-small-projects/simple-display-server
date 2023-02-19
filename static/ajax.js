@@ -1,29 +1,25 @@
 "use strict";
 
-function displayMessages(data) {
-    console.log(data)
+let active = true;
 
+function displayMessages(data) {
     let messages = data['messages'];
-    console.log(messages.length)
 
     let html = "";
 
-    if (messages.length == 0) {
-        html = "No messages so far.";
-    } else {
-        messages.forEach(msg => {
-            let author = msg.author ? msg.author : "Unknown";
-            let time = ""
+    messages.forEach(msg => {
+        let author = msg.author ? msg.author : "Unknown";
+        let time = ""
 
-            html += `<dt>${author} @ ${time}</dt>`;
-            html +=`<dd>${msg.content}</dd>`;
-        });
-    }
-
+        html += `<dt>${author} @ ${time}</dt>`;
+        html +=`<dd>${msg.content}</dd>`;
+    });
+    
     $('#messages').html(html);
 }
 
 function sendRequest() {
+    if (!active) { return; }
     $.ajax({
         method: 'GET',
         url: '/requests',
@@ -31,11 +27,26 @@ function sendRequest() {
         dataType: 'json',
         success: (data, status) => {
             displayMessages(data);
-            // console.log(data);
-            // $('#data').html($('#data').text() + data);
+        },
+        error: () => {
+            $('#messages').html("No messages so far.");
         }
     })
 }
 
 sendRequest();
 setInterval(sendRequest, 1000);
+
+$('#clear').click(() => {
+    $.ajax({
+        method: 'POST',
+        url: '/requests/clear',
+        success: (data, status) => {
+            if (status == 'success') {
+                $('#messages').html("Messages cleared.");
+                active = false;
+                setTimeout(() => { active = true; }, 2500);
+            }
+        }
+    })
+})
