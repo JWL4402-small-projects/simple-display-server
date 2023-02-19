@@ -12,7 +12,11 @@ function displayMessages(data) {
         html = "No messages so far.";
     } else {
         messages.forEach(msg => {
-            html += msg + '<br>';
+            let author = msg.author ? msg.author : "Unknown";
+            let time = ""
+
+            html += `<dt>${author} @ ${time}</dt>`;
+            html +=`<dd>${msg.content}</dd>`;
         });
     }
 
@@ -33,4 +37,5 @@ function sendRequest() {
     })
 }
 
+sendRequest();
 setInterval(sendRequest, 1000);
