@@ -7,11 +7,18 @@
     <title>Display Server</title>
 </head>
 <body>
-    <p id="data">Hello world!</p>
+    <h1>Welcome</h1>
+    <p id="address"></p>
+
+    <h3>Messages</h3>
+    <dl id="messages"></dl>
+
     <script type=text/javascript src="{{
         url_for('static', filename='jquery.min.js') }}"></script>
     <script type=text/javascript src="{{
         url_for('static', filename='ajax.js') }}"></script>
+    <script type=text/javascript src="{{
+        url_for('static', filename='index.js') }}"></script>
     <!-- <script src="../ajax.js"></script> -->
 </body>
 </html>
