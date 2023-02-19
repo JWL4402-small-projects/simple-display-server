@@ -8,7 +8,18 @@
 </head>
 <body>
     <h1>Welcome</h1>
-    <p id="address"></p>
+    <p>Listening at <span class="address"></span>.</p>
+    <p>Send a POST request to <span class="address"></span>requests in order for your message to appear here.</p>
+    <dl>
+        <dt style="font-weight: bold;">Required Values</dt>
+        <dd>content : the content of the message, which will be displayed.</dd>
+        <dt style="font-weight: bold;">Optional Values</dt>
+        <dd>author : the author of the message.</dd>
+        <dd>time : when the message was sent.</dd>
+        <dt style="font-weight: bold;">Headers</dt>
+        <dd>mimetype : 'application/json'</dd>
+        <dd>content_type : 'json'</dd>
+    </dl>
 
     <h3>Messages</h3>
     <button id="clear">Clear messages</button>

@@ -35,7 +35,7 @@ def requests():
 	if request.method == "POST":
 		post = json.loads(request.json)
 		
-		msg = post.get('message', None)
+		msg = post.get('content', None)
 		if msg is None:
 			return "No message attached.", 400
 		

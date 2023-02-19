@@ -9,7 +9,7 @@ function displayMessages(data) {
 
     messages.forEach(msg => {
         let author = msg.author ? msg.author : "Unknown";
-        let time = ""
+        let time = msg.time ? msg.time : "unknown time"
 
         html += `<dt>${author} @ ${time}</dt>`;
         html +=`<dd>${msg.content}</dd>`;
