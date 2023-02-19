@@ -7,7 +7,7 @@ dirname = os.path.dirname(os.path.abspath(__file__))
 fp = os.path.join(dirname, 'data', 'messages.json')
 
 if not os.path.exists(fp): # ensure file exists
-    open(fp, 'w').close()
+	open(fp, 'w').close()
 	
 
 app = Flask(__name__)
