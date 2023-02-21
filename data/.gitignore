@@ -1,0 +1,3 @@
+*
+!.gitignore
+# ignores all stored data, but ensures the data folder exists, which is required for the code to run
