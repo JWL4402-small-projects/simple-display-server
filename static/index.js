@@ -1,1 +1,1 @@
-$('#address').html(`Listening at : ${location.href}`);
+$('#address').html(`${location.href}`);
